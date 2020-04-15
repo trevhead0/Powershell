@@ -18,7 +18,9 @@ function gitdone { gita; gitp}
 function gitlazy([string]$a) {gita; 
 git commit -m $a; 
 gitp}
+function gitpud {git pull upstream dev}
 
+function gitpum {git pull upstream master}
 
 Write-Host '      _________'
 Write-Host '     / ======= \'
