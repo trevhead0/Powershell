@@ -1,6 +1,16 @@
 # Add these lines to your $PROFILE
 New-Alias -Name vi -Value 'C:\Program Files (x86)\vim\vim80\vim.exe'
 New-Alias -Name vim -Value 'C:\Program Files (x86)\vim\vim80\vim.exe'
+Import-Module posh-git
+$fileToCheck = "C:\Program Files (x86)\vim\vim80\vim.exe"
+if (Test-Path $fileToCheck -PathType leaf)
+{
+    #do some stuff
+}
+else{
+Invoke-WebRequest -Uri https://ftp.nluug.nl/pub/vim/pc/gvim80-586.exe ` -Outfile ~\Downloads\gvim80-586.exe
+~\Downloads\gvim80-586.exe
+}
 
 # Include this if you like a vim command line experience
  Set-PSReadlineOption -EditMode vi -BellStyle None
@@ -15,8 +25,8 @@ function gita {git add .}
 function gitr {git reset HEAD}
 function gitc([string]$a) {git commit -m $a}
 function gitp {git push origin}
-function gitlazy([string]$a) {gita; 
-git commit -m $a; 
+function gitlazy([string]$a) {gita;
+git commit -m $a;
 gitp}
 function gitpud {git pull upstream dev}
 function gitpum {git pull upstream master}
@@ -24,7 +34,7 @@ function gitpum {git pull upstream master}
 #change title of powershell command
 function title([string]$a){ $host.UI.RawUI.WindowTitle = $a}
 
-#Cool logo to start off the banner thingy 
+#Cool logo to start off the banner thingy
 Write-Host '      _________'
 Write-Host '     / ======= \'
 Write-Host '    / __________\'
@@ -40,11 +50,12 @@ Write-Host ' (_________________)'
 
 
 
+
 #move this this directory to git stuff
 $PSDIR = "C:\Users\Trevor\Documents\PowerShell"
-$HOME2 = "D:\School\IIT-Semester-5-Spring\"  
+$HOME2 = "D:\School\IIT-Semester-5-Spring\"
 
-# Starting Location 
-set-Location -Path D:\School\IIT-Semester-5-Spring\                                                                        
+# Starting Location
+set-Location -Path D:\School\IIT-Semester-5-Spring\
 # This changes the title of your powershelll
 $host.UI.RawUI.WindowTitle = "Trevors Powershell"
