@@ -1,61 +1,9 @@
-# Add these lines to your $PROFILE
-New-Alias -Name vi -Value 'C:\Program Files (x86)\vim\vim80\vim.exe'
-New-Alias -Name vim -Value 'C:\Program Files (x86)\vim\vim80\vim.exe'
-Import-Module posh-git
-$fileToCheck = "C:\Program Files (x86)\vim\vim80\vim.exe"
-if (Test-Path $fileToCheck -PathType leaf)
-{
-    #do some stuff
-}
-else{
-Invoke-WebRequest -Uri https://ftp.nluug.nl/pub/vim/pc/gvim80-586.exe ` -Outfile ~\Downloads\gvim80-586.exe
-~\Downloads\gvim80-586.exe
-}
 
-# Include this if you like a vim command line experience
- Set-PSReadlineOption -EditMode vi -BellStyle None
+# directory where my scripts are stored
+$psdir='C:\Users\tloveday\Documents\WindowsPowerShell\'
 
-Write-Host 'Powershell' $PsVersionTable.PSVersion '-' (Get-date)
-Write-Host ''
+# load all ‘autoload’ scripts
+Get-ChildItem ${psdir}\scripts\*.ps1 | %{.$_}
+Write-Host Custom PowerShell Environment Loaded
 
-#Functions for git:::::status/diff/add/reset/commit/push/lazy/pull up&master
-function gits {git status}
-function gitd {git diff}
-function gita {git add .}
-function gitr {git reset HEAD}
-function gitc([string]$a) {git commit -m $a}
-function gitp {git push origin}
-function gitlazy([string]$a) {gita;
-git commit -m $a;
-gitp}
-function gitpud {git pull upstream dev}
-function gitpum {git pull upstream master}
-
-#change title of powershell command
-function title([string]$a){ $host.UI.RawUI.WindowTitle = $a}
-
-#Cool logo to start off the banner thingy
-Write-Host '      _________'
-Write-Host '     / ======= \'
-Write-Host '    / __________\'
-Write-Host '   | ___________ |'
-Write-Host '   | | -       | |'
-Write-Host '   | |         | |'
-Write-Host '   | |_________| |________________________'
-Write-Host '   \=____________/   Trevors Computer     )'
-Write-Host '   / """"""""""" \                       /'
-Write-Host '  / ::::::::::::: \                  =D-`'
-Write-Host ' (_________________)'
-
-
-
-
-
-#move this this directory to git stuff
-$PSDIR = "C:\Users\Trevor\Documents\PowerShell"
-$HOME2 = "D:\School\IIT-Semester-6-Summer\"
-
-# Starting Location
-set-Location -Path D:\School\IIT-Semester-6-Summer
-# This changes the title of your powershelll
-$host.UI.RawUI.WindowTitle = "Trevors Powershell"
+ Set-Alias -Name zip -Value Compress-Archive
