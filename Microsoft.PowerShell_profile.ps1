@@ -53,9 +53,9 @@ Write-Host ' (_________________)'
 
 #move this this directory to git stuff
 $PSDIR = "C:\Users\Trevor\Documents\PowerShell"
-$HOME2 = "D:\School\IIT-Semester-5-Spring\"
+$HOME2 = "D:\School\IIT-Semester-6-Summer\"
 
 # Starting Location
-set-Location -Path D:\School\IIT-Semester-5-Spring\
+set-Location -Path D:\School\IIT-Semester-6-Summer
 # This changes the title of your powershelll
 $host.UI.RawUI.WindowTitle = "Trevors Powershell"
